@@ -25,8 +25,8 @@ done
 
 # packman packages to be installed
 declare -r PACKAGES_PACMAN=(
+  rsync
   firefox
-  yazi
   yazi
   yubikey-manager
   pam-u2f
