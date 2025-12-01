@@ -4,6 +4,7 @@
 declare -r DIR_USER_HOME=$(eval echo ~$USER)
 declare -r DIR_USER_CONFIG=$DIR_USER_HOME/.config
 declare -r DIR_SCRIPT=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+declare -r ZSH_CUSTOM=$DIR_USER_HOME/.oh-my-zsh/custom
 
 # default option values
 OPTION_DEBUG=false
@@ -37,4 +38,17 @@ stow --target $DIR_USER_HOME *
 cd $DIR_SCRIPT
 
 # zsh als Standardshell
-sudo chsh -s $(which zsh) $USER 
+sudo chsh -s $(which zsh) $USER
+
+# Fonts runterladen
+yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k
+
+# oh-my-zsh installieren
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) -y"
+
+# oh-my-zsh plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# oh-my-zsh themes
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
