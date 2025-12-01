@@ -31,15 +31,7 @@ if [[ "$(sudo id -u)" -ne 0 ]]; then
   printf 'This script must be run with sudo\n'
 fi
 
-# change starship config to catppuccin
-starship preset catppuccin-powerline -o ~/.config/starship.toml
-
-# download zellij catppuccin theme
-mkdir -p $DIR_USER_CONFIG/zellij/themes
-curl https://raw.githubusercontent.com/catppuccin/zellij/refs/heads/main/catppuccin.kdl > $DIR_USER_CONFIG/zellij/themes/catppuccin.kdl
-
 # stow all config files
 cd $DIR_SCRIPT/dotfiles
-stow --adopt --target $DIR_USER_HOME *
-git restore .
+stow --target $DIR_USER_HOME *
 cd $DIR_SCRIPT
