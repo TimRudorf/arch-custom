@@ -3,26 +3,25 @@
 # CONSTANTS
 declare -r DIR_USER_HOME=$(eval echo ~$USER)
 declare -r DIR_USER_CONFIG=$DIR_USER_HOME/.config
-declare -r DIR_SCRIPT=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+declare -r DIR_SCRIPT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 declare -r ZSH_CUSTOM=$DIR_USER_HOME/.oh-my-zsh/custom
 
 # default option values
 OPTION_DEBUG=false
 
 # check if debug is enabled
-for parameter in "$@"
-do
+for parameter in "$@"; do
   case $parameter in
 
-    -d | --debug)
-      printf 'debug has been enabled\n'
-      OPTION_DEBUG=true
-      ;;
+  -d | --debug)
+    printf 'debug has been enabled\n'
+    OPTION_DEBUG=true
+    ;;
 
-    *)
-      printf "option '$parameter' is unknown\n"
-      exit 1
-      ;;
+  *)
+    printf "option '$parameter' is unknown\n"
+    exit 1
+    ;;
   esac
 done
 
@@ -54,7 +53,7 @@ plugins=(
   "https://github.com/zsh-users/zsh-autosuggestions;$ZSH_CUSTOM/plugins/zsh-autosuggestions"
   "https://github.com/zsh-users/zsh-syntax-highlighting.git;$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
   "--depth=1 https://github.com/romkatv/powerlevel10k.git;$ZSH_CUSTOM/themes/powerlevel10k"
-  )
+)
 
 for plugin in "${plugins[@]}"; do
   IFS=';' read -r url dir <<<"$plugin"
@@ -65,3 +64,7 @@ for plugin in "${plugins[@]}"; do
     git clone "$url" "$dir"
   fi
 done
+
+# iwd aktivieren
+sudo systemctl enable iwd
+sudo systemctl start iwd
