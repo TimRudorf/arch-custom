@@ -5,6 +5,8 @@ declare -r DIR_USER_HOME=$(eval echo ~$USER)
 declare -r DIR_USER_CONFIG=$DIR_USER_HOME/.config
 declare -r DIR_SCRIPT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 declare -r ZSH_CUSTOM=$DIR_USER_HOME/.oh-my-zsh/custom
+declare -r DIR_FIREFOX_PROFILES=$DIR_USER_HOME/.mozilla/firefox
+declare -r STR_FIREFOX_PROFILE_SUBSTRING='default-release'
 
 # default option values
 OPTION_DEBUG=false
@@ -68,3 +70,8 @@ done
 # iwd aktivieren
 sudo systemctl enable iwd
 sudo systemctl start iwd
+
+# Firefox config syncen
+printf 'Firefox Konfiguration setzen\n'
+declare -r DIR_FIREFOX_ACTIVE_PROFILE=$(find $DIR_FIREFOX_PROFILES -type d -name "*.$STR_FIREFOX_PROFILE_SUBSTRING" -print -quit)
+rsync -avhP $DIR_SCRIPT/config/firefox/* $DIR_FIREFOX_ACTIVE_PROFILE
