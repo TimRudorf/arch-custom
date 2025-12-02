@@ -43,6 +43,7 @@ declare -r PACKAGES_PACMAN=(
   bat
   zellij
   wl-clipboard
+  ripgrep
   # audio ------------------
   pulseaudio
   pavucontrol
