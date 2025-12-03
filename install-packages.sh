@@ -44,14 +44,12 @@ declare -r PACKAGES_PACMAN=(
   zellij
   wl-clipboard
   ripgrep
+  # languages
+  python
   # audio ------------------
   pulseaudio
   pavucontrol
   pactl
-  # languages --------------
-  nodejs
-  npm
-  python
   # hyperland --------------
   hyprland
   hyprlock
@@ -130,14 +128,21 @@ for package in "${PACKAGES_PACMAN[@]}"; do
   run_debug install_pacman_package $package
 done
 
+# install nodejs/npm
+printf "\n"
+printf "installing nodejs/npm...\n"
+run_debug curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+run_debug nvm install 24
+
 # update npm
 printf '\n'
 printf 'updating npm...\n'
-run_debug sudo npm install -g npm@latest
+run_debug npm install -g npm@latest
 
 # install packages (npm)
 printf 'installing npm packages\n'
 for package in "${PACKAGES_NPM[@]}"; do
   printf "installing $package...\n"
-  run_debug sudo npm install -g $package
+  run_debug npm install -g $package
 done
