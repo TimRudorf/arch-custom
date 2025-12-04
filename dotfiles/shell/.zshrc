@@ -26,8 +26,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# matlab fix
+export LD_LIBRARY_PATH=$HOME/matlab/gnutls/usr/lib/:;
+
 # zoxide
 eval "$(zoxide init zsh)"
+
+# fzf
+source <(fzf --zsh)
 
 # Alias
 source ~/.alias.sh

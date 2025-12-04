@@ -46,7 +46,7 @@ declare -r PACKAGES_PACMAN=(
   wl-clipboard
   ripgrep
   freerdp
-  dunst
+  7zip
   # languages
   python
   # audio ------------------
@@ -60,6 +60,7 @@ declare -r PACKAGES_PACMAN=(
   hyprpaper
   rofi
   waybar
+  dunst
   # tui --------------------
   btop
   lazygit
