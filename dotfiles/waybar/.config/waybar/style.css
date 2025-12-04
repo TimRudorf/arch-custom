@@ -49,6 +49,7 @@ button {
 #network,
 #clock,
 #battery,
+#power-profiles-daemon,
 #pulseaudio,
 #custom-lock,
 #language,
@@ -75,6 +76,18 @@ button {
 
 #battery.warning:not(.charging) {
   color: @red;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @green;
+}
+
+#power-profiles-daemon.balances {
+  color: @text;
+}
+
+#power-profiles-daemon.performance {
+  color: @yellow;
 }
 
 #backlight {

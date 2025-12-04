@@ -13,10 +13,10 @@
 	],
 	"modules-right": [
 		"pulseaudio",
-		// "cava",
 		"backlight",
 		"network",
 		"battery",
+    "power-profiles-daemon",
 		"tray",
 		"custom/lock",
 		"custom/power"
@@ -108,6 +108,17 @@
 			""
 		]
 	},
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
 	"network": {
 		"interface": "wlan0",
 		"interval": 10,
