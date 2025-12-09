@@ -42,18 +42,16 @@ button {
   background: transparent;
 }
 
-#custom-music,
 #tray,
 #backlight,
 #custom-clock,
 #network,
+#custom-tailscale,
 #clock,
 #battery,
 #power-profiles-daemon,
 #pulseaudio,
 #custom-lock,
-#language,
-#cava,
 #custom-power {
   background-color: @surface0;
   padding: 0.5rem 1rem;
@@ -64,6 +62,14 @@ button {
 #custom-clock {
   color: @text;
   border-radius: 5px;
+}
+
+#custom-tailscale.connected {
+  color: @green;
+}
+
+#custom-tailscale.stopped {
+  color: @red;
 }
 
 #battery {
@@ -100,30 +106,17 @@ button {
 
 #backlight,
 #network,
-#battery {
+#custom-tailscale,
+#battery,
+#power-profiles-daemon,
+#tray,
+#custom-lock {
   border-radius: 0;
 }
 
 #pulseaudio {
   color: @maroon;
   border-radius: 5px 0px 0px 5px;
-}
-
-#cava {
-  color: @pink;
-  border-radius: 5px 0px 0px 5px;
-  margin-left: 5px;
-  margin-right: 0;
-  padding-right: 0;
-}
-
-#custom-music {
-  color: @mauve;
-  border-radius: 5px;
-}
-
-#language {
-  color: @lavender;
 }
 
 #custom-power {

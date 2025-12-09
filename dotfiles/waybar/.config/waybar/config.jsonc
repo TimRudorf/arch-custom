@@ -15,6 +15,7 @@
 		"pulseaudio",
 		"backlight",
 		"network",
+    "custom/tailscale",
 		"battery",
     "power-profiles-daemon",
 		"tray",
@@ -119,12 +120,25 @@
       "power-saver": ""
     }
   },
-	"network": {
+	"custom/tailscale" : {
+    "exec": "~/.config/waybar/scripts/waybar-tailscale/waybar-tailscale.sh --status",
+    "on-click": "exec ~/.config/waybar/scripts/waybar-tailscale/waybar-tailscale.sh --toggle",
+    "exec-on-event": true,
+    "format": "{icon}",
+    "format-icons": {
+        "connected": "󰛳",
+        "stopped": "󰲛"
+    },
+    "tooltip": true,
+    "return-type": "json",
+    "interval": 3,
+  },
+  "network": {
 		"interface": "wlan0",
 		"interval": 10,
-		"format-wifi": "  {essid} ({signalStrength}%)",
-		"format-disconnected": "󰤭",
-		"tooltip-format": "{ifname}\nIP: {ipaddr}\nSSID: {essid}\nSignal: {signalStrength}%"
+		"format-wifi": "󰖩",
+		"format-disconnected": "󰖪",
+		"tooltip-format": "{ifname}\nIP: {ipaddr}\nSSID: {essid}\nGateway: {gwaddr}\nSubnet: {netmask}\nSignal: {signalStrength}%\nFrequenz: {frequency} GHz"
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
