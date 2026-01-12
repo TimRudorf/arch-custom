@@ -51,6 +51,7 @@ declare -r PACKAGES_PACMAN=(
     glow
     core/linux-api-headers
     gcc
+    bluez
     # languages
     python
     python-pip
